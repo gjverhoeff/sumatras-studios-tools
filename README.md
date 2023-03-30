@@ -1,0 +1,25 @@
+# Sumatras Studios Tools (Unreal Engine 5 Plugin)
+Plugin for Unreal Engine 5. Evolving library of functions written to be used in projects. These are functions that I use myself, but are not elaborate enough to warrent a full plugin. 
+
+
+## Installation
+Download the latest version from the releases page and make sure that that you put the plugin in the plugins folder of your Unreal Engine Project. 
+
+
+
+## Usage
+
+To have the plugin work in a packaged project make sure to add the following to your DefaultEngine.ini (normally found Project/Config/DefaultEngine.ini )
+
+```
+[Plugins]
+EnabledPlugins=Sumatras_Studios_Tools
+```
+
+## Available Blueprint Nodes
+
+- Rotational Unreal Units to Degrees
+
+
+
+
