@@ -27,6 +27,18 @@ class USumatras_Studios_ToolsBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Rotational Unreal Units to Degrees", Keywords = "Rotational Unreal Units to Degrees"), Category = "Sumatras Studios Tools")
-	static float RotationalUnrealUnitsToDegrees(float RotationalUnrealUnits);
+
+		// Rotational Unreal Units Section
+
+		UFUNCTION(BlueprintPure, meta = (DisplayName = "Rotational Unreal Units to Degrees", Keywords = "Rotational Unreal Units to Degrees"), Category = "Sumatras Studios Tools|Rotational Unreal Units")
+		static UPARAM(DisplayName = "Degrees") float RotationalUnrealUnitsToDegrees(float RotationalUnrealUnits);
+
+		UFUNCTION(BlueprintPure, meta = (DisplayName = "Degrees to Rotational Unreal Units", Keywords = "Degrees to Rotational Unreal Units"), Category = "Sumatras Studios Tools|Rotational Unreal Units")
+		static UPARAM(DisplayName = "Rotational Unreal Units") float DegreesToRotationalUnrealUnits(float Degrees);
+
+		UFUNCTION(BlueprintPure, meta = (DisplayName = "Rotational Unreal Units to Radian", Keywords = "Rotational Unreal Units to Radian"), Category = "Sumatras Studios Tools|Rotational Unreal Units")
+		static UPARAM(DisplayName = "Radian") float RotationalUnrealUnitsToRadian(float RotationalUnrealUnits);
+
+		UFUNCTION(BlueprintPure, meta = (DisplayName = "Radian to Rotational Unreal Units", Keywords = "Radian to Rotational Unreal Units"), Category = "Sumatras Studios Tools|Rotational Unreal Units")
+		static UPARAM(DisplayName = "Rotational Unreal Units") float RadianToRotationalUnrealUnits(float Radian);
 };

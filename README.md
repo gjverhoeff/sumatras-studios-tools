@@ -24,6 +24,9 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 Rotational Unreal Units
 
 - Rotational Unreal Units to Degrees
+- Rotational Unreal Units to Radian
+- Degrees to Rotational Unreal Units
+- Radian to Rotational Unreal Units
 
 
 
