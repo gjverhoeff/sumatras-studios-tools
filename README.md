@@ -18,7 +18,10 @@ EnabledPlugins=Sumatras_Studios_Tools
 
 ## Available Blueprint Nodes
 
-More information about the nodes on the wiki page of this repository
+More information about the nodes, formulas used, etc. on the wiki page of this repository
+
+</br>
+Rotational Unreal Units
 
 - Rotational Unreal Units to Degrees
 
