@@ -31,8 +31,8 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 
 ### Time
 
-- Local Time to Text
-- Local Time to String
+- Local System Time to Text
+- Local System Time to String
 
 
 
