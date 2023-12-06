@@ -13,7 +13,7 @@ To have the plugin work in a packaged project make sure to add the following to 
 
 ```
 [Plugins]
-EnabledPlugins=Sumatras_Studios_Tools
+EnabledPlugins=sumatras-studios-tools
 ```
 
 ## Available Blueprint Nodes
