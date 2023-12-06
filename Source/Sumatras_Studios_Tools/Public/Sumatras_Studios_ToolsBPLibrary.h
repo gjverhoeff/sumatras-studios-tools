@@ -41,4 +41,8 @@ class USumatras_Studios_ToolsBPLibrary : public UBlueprintFunctionLibrary
 
 		UFUNCTION(BlueprintPure, meta = (DisplayName = "Radian to Rotational Unreal Units", Keywords = "Radian to Rotational Unreal Units"), Category = "Sumatras Studios Tools|Rotational Unreal Units")
 		static UPARAM(DisplayName = "Rotational Unreal Units") float RadianToRotationalUnrealUnits(float Radian);
+
+		// Local System Time to Text
+		UFUNCTION(BlueprintCallable, meta = (DisplayName = "Local Time to Text", Keywords = "Local System Time to Text Node"), Category = "Sumatras Studios Tools|Time")
+		static void LocalTime(bool MilitaryTime, bool DisplaySeconds, FText& TimeText);
 };
