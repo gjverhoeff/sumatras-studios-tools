@@ -3,7 +3,7 @@ Plugin for Unreal Engine 5. Evolving library of functions written to be used in 
 
 
 ## Installation
-Clone this project in your Plugins folder of your project and make sure the plugin is enabled. 
+Clone this repository in your Plugins folder of your project and make sure the plugin is enabled. 
 
 
 
