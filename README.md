@@ -3,7 +3,7 @@ Plugin for Unreal Engine 5. Evolving library of functions written to be used in 
 
 
 ## Installation
-Download the latest version from the releases page and make sure that that you put the plugin in the plugins folder of your Unreal Engine Project. 
+Clone this project in your Plugins folder of your project and make sure the plugin is enabled. 
 
 
 
