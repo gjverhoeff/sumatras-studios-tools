@@ -28,6 +28,11 @@ Rotational Unreal Units
 - Degrees to Rotational Unreal Units
 - Radian to Rotational Unreal Units
 
+Local Time
+
+- Local Time to Text
+Node for easily showing system time in 12/24 hour format to text with additional option to show seconds. 
+
 
 
 
