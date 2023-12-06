@@ -21,18 +21,17 @@ EnabledPlugins=Sumatras_Studios_Tools
 More information about the nodes, formulas used, etc. on the wiki page of this repository
 
 </br>
-Rotational Unreal Units
+
+### Rotational Unreal Units
 
 - Rotational Unreal Units to Degrees
 - Rotational Unreal Units to Radian
 - Degrees to Rotational Unreal Units
 - Radian to Rotational Unreal Units
 
-Local Time
+### Time
 
 - Local Time to Text
-  Node for easily showing system time in 12/24 hour format to text with additional option to show seconds. 
-
 
 
 
