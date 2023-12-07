@@ -46,14 +46,29 @@ float USumatras_Studios_ToolsBPLibrary::RadianToRotationalUnrealUnits(float Radi
 
 
 // Local System Time to Text
-void USumatras_Studios_ToolsBPLibrary::LocalTime(bool MilitaryTime, bool DisplaySeconds, FText& TimeText)
+void USumatras_Studios_ToolsBPLibrary::LocalTime(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FText& TimeText)
 {
 
 	FDateTime CurrentTime = FDateTime::Now();
 
 	FString seconds;
 	FString minutes;
+	FString PMorAM;
 	
+	if (addPMorAM == true) {
+		bool afternoon = CurrentTime.IsAfternoon();
+		
+		if (afternoon == true) {
+			PMorAM = "PM";
+		}
+		else {
+			PMorAM = "AM";
+		}
+		
+	}
+	else {
+		PMorAM = "";
+	}
 
 
 	//12 Clock with Seconds
@@ -79,7 +94,7 @@ void USumatras_Studios_ToolsBPLibrary::LocalTime(bool MilitaryTime, bool Display
 
 		
 		//Format STring
-		FString time = hour + ":" + minutes + ":" + seconds;
+		FString time = hour + ":" + minutes + ":" + seconds + PMorAM;
 
 		TimeText = FText::FromString(time);
 	}
@@ -98,7 +113,7 @@ void USumatras_Studios_ToolsBPLibrary::LocalTime(bool MilitaryTime, bool Display
 		}
 
 		//Format STring
-		FString time = hour + ":" + minutes;
+		FString time = hour + ":" + minutes + PMorAM;
 
 		TimeText = FText::FromString(time);
 	}
@@ -126,7 +141,7 @@ void USumatras_Studios_ToolsBPLibrary::LocalTime(bool MilitaryTime, bool Display
 
 
 		//Format STring
-		FString time = hour + ":" + minutes + ":" + seconds;
+		FString time = hour + ":" + minutes + ":" + seconds + PMorAM;
 
 		TimeText = FText::FromString(time);
 	}
@@ -145,7 +160,7 @@ void USumatras_Studios_ToolsBPLibrary::LocalTime(bool MilitaryTime, bool Display
 		}
 
 		//Format STring
-		FString time = hour + ":" + minutes;
+		FString time = hour + ":" + minutes + PMorAM;
 
 		TimeText = FText::FromString(time);
 	}
@@ -155,14 +170,29 @@ void USumatras_Studios_ToolsBPLibrary::LocalTime(bool MilitaryTime, bool Display
 };
 
 // Local System Time to String
-void USumatras_Studios_ToolsBPLibrary::LocalTimeToString(bool MilitaryTime, bool DisplaySeconds, FString& TimeString)
+void USumatras_Studios_ToolsBPLibrary::LocalTimeToString(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FString& TimeString)
 {
 
 	FDateTime CurrentTime = FDateTime::Now();
 
 	FString seconds;
 	FString minutes;
+	FString PMorAM;
 
+	if (addPMorAM == true) {
+		bool afternoon = CurrentTime.IsAfternoon();
+
+		if (afternoon == true) {
+			PMorAM = "PM";
+		}
+		else {
+			PMorAM = "AM";
+		}
+
+	}
+	else {
+		PMorAM = "";
+	}
 
 
 	//12 Clock with Seconds
@@ -188,7 +218,7 @@ void USumatras_Studios_ToolsBPLibrary::LocalTimeToString(bool MilitaryTime, bool
 
 
 		//Format STring
-		TimeString = hour + ":" + minutes + ":" + seconds;
+		TimeString = hour + ":" + minutes + ":" + seconds + PMorAM;
 	}
 
 	//12 Clock without Seconds
@@ -205,7 +235,7 @@ void USumatras_Studios_ToolsBPLibrary::LocalTimeToString(bool MilitaryTime, bool
 		}
 
 		//Format STring
-		TimeString = hour + ":" + minutes;
+		TimeString = hour + ":" + minutes + PMorAM;
 
 	}
 
@@ -232,7 +262,7 @@ void USumatras_Studios_ToolsBPLibrary::LocalTimeToString(bool MilitaryTime, bool
 
 
 		//Format STring
-		TimeString = hour + ":" + minutes + ":" + seconds;
+		TimeString = hour + ":" + minutes + ":" + seconds + PMorAM;
 
 	}
 
@@ -250,7 +280,7 @@ void USumatras_Studios_ToolsBPLibrary::LocalTimeToString(bool MilitaryTime, bool
 		}
 
 		//Format STring
-		TimeString = hour + ":" + minutes;
+		TimeString = hour + ":" + minutes + PMorAM;
 
 	
 	}

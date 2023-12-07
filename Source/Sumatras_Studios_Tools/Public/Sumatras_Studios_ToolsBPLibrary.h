@@ -44,10 +44,10 @@ class USumatras_Studios_ToolsBPLibrary : public UBlueprintFunctionLibrary
 
 		// Local System Time to Text
 		UFUNCTION(BlueprintCallable, meta = (DisplayName = "Local System Time to Text", Keywords = "Local System Time to Text Node"), Category = "Sumatras Studios Tools|Time")
-		static void LocalTime(bool MilitaryTime, bool DisplaySeconds, FText& TimeText);
+		static void LocalTime(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FText& TimeText);
 
 		// Local System Time to Text
 		UFUNCTION(BlueprintCallable, meta = (DisplayName = "Local System Time to String", Keywords = "Local System Time to Text Node"), Category = "Sumatras Studios Tools|Time")
-		static void LocalTimeToString(bool MilitaryTime, bool DisplaySeconds, FString& TimeString);
+		static void LocalTimeToString(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FString& TimeString);
 
 };
