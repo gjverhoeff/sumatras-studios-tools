@@ -4,6 +4,7 @@
 #include "Sumatras_Studios_Tools.h"
 #include "Math/UnrealMathUtility.h"
 
+
 USumatras_Studios_ToolsBPLibrary::USumatras_Studios_ToolsBPLibrary(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)
 {
@@ -42,7 +43,9 @@ float USumatras_Studios_ToolsBPLibrary::RadianToRotationalUnrealUnits(float Radi
 	return RotationalUnrealUnits;
 }
 
-// Local Time and Countdown Node
+
+
+// Time Section
 
 
 // Local System Time to Text
@@ -261,7 +264,7 @@ void USumatras_Studios_ToolsBPLibrary::LocalTimeToString(bool MilitaryTime, bool
 		}
 
 
-		//Format STring
+		//Format String
 		TimeString = hour + ":" + minutes + ":" + seconds + PMorAM;
 
 	}
@@ -279,7 +282,7 @@ void USumatras_Studios_ToolsBPLibrary::LocalTimeToString(bool MilitaryTime, bool
 			minutes = "0" + FString::FromInt(CurrentTime.GetMinute());
 		}
 
-		//Format STring
+		//Format String
 		TimeString = hour + ":" + minutes + PMorAM;
 
 	
@@ -288,4 +291,6 @@ void USumatras_Studios_ToolsBPLibrary::LocalTimeToString(bool MilitaryTime, bool
 
 
 };
+
+
 
