@@ -6,16 +6,6 @@ Plugin for Unreal Engine 5. Evolving library of functions written to be used in 
 Clone this repository in your Plugins folder of your project and make sure the plugin is enabled. 
 
 
-
-## Usage
-
-To have the plugin work in a packaged project make sure to add the following to your DefaultEngine.ini (normally found Project/Config/DefaultEngine.ini )
-
-```
-[Plugins]
-EnabledPlugins=sumatras-studios-tools
-```
-
 ## Available Blueprint Nodes
 
 More information about the nodes, formulas used, etc. on the wiki page of this repository
