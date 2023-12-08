@@ -47,7 +47,7 @@ class USumatras_Studios_ToolsBPLibrary : public UBlueprintFunctionLibrary
 		static void LocalTime(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FText& TimeText);
 
 		// Local System Time to Text
-		UFUNCTION(BlueprintCallable, meta = (DisplayName = "Local System Time to String", Keywords = "Local System Time to Text Node"), Category = "Sumatras Studios Tools|Time")
+		UFUNCTION(BlueprintCallable, meta = (DisplayName = "Local System Time to String", Keywords = "Local System Time to String Node"), Category = "Sumatras Studios Tools|Time")
 		static void LocalTimeToString(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FString& TimeString);
 
 };
