@@ -28,35 +28,6 @@ class USumatras_Studios_ToolsBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
-
-	// Rotational Unreal Units Section
-
-		// Rotational Unreal Units to Degrees
-		UFUNCTION(BlueprintPure, meta = (DisplayName = "Rotational Unreal Units to Degrees", Keywords = "Rotational Unreal Units to Degrees"), Category = "Sumatras Studios Tools|Rotational Unreal Units")
-		static UPARAM(DisplayName = "Degrees") float RotationalUnrealUnitsToDegrees(float RotationalUnrealUnits);
-
-		// Degrees to Rotational Unreal Units
-		UFUNCTION(BlueprintPure, meta = (DisplayName = "Degrees to Rotational Unreal Units", Keywords = "Degrees to Rotational Unreal Units"), Category = "Sumatras Studios Tools|Rotational Unreal Units")
-		static UPARAM(DisplayName = "Rotational Unreal Units") float DegreesToRotationalUnrealUnits(float Degrees);
-
-		// Rotational Unreal Units to Radian
-		UFUNCTION(BlueprintPure, meta = (DisplayName = "Rotational Unreal Units to Radian", Keywords = "Rotational Unreal Units to Radian"), Category = "Sumatras Studios Tools|Rotational Unreal Units")
-		static UPARAM(DisplayName = "Radian") float RotationalUnrealUnitsToRadian(float RotationalUnrealUnits);
-
-		//Radian to Rotational Unreal Units
-		UFUNCTION(BlueprintPure, meta = (DisplayName = "Radian to Rotational Unreal Units", Keywords = "Radian to Rotational Unreal Units"), Category = "Sumatras Studios Tools|Rotational Unreal Units")
-		static UPARAM(DisplayName = "Rotational Unreal Units") float RadianToRotationalUnrealUnits(float Radian);
-
-	// Time Section
-	
-		// Local System Time to Text
-		UFUNCTION(BlueprintCallable, meta = (DisplayName = "Local System Time to Text", Keywords = "Local System Time to Text Node"), Category = "Sumatras Studios Tools|Time")
-		static void LocalTime(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FText& TimeText);
-
-		// Local System Time to String
-		UFUNCTION(BlueprintCallable, meta = (DisplayName = "Local System Time to String", Keywords = "Local System Time to String Node"), Category = "Sumatras Studios Tools|Time")
-		static void LocalTimeToString(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FString& TimeString);
-
 	
 
 };
