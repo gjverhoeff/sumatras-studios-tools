@@ -26,8 +26,8 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 
 ### Steam Deck
 
-- Is Steam Deck?
-- Is SteamOS?
+- Is Steam Deck
+- Is SteamOS in Gaming Mode
 
 
 
