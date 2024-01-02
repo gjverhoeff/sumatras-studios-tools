@@ -3,7 +3,7 @@
 
 #include "SteamDeck.h"
 
-bool USteamDeck::IsSteamOS()
+bool USteamDeck::IsSteamOSinGamingMode()
 {
 	bool isSteamOS = FPlatformMisc::GetEnvironmentVariable(TEXT("SteamOS")).Equals(FString(TEXT("1")));
 
