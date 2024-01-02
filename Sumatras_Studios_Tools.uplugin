@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "0.1.1",
+	"VersionName": "0.1.2",
 	"FriendlyName": "Sumatras Studios Tools",
 	"Description": "Blueprint Function Library with all kinds of nodes ",
 	"Category": "Other",
@@ -20,7 +20,8 @@
 			"Type": "Runtime",
 			"LoadingPhase": "PreLoadingScreen",
 			"PlatformAllowList": [
-				"Win64"
+				"Win64",
+				"Linux"
 			]
 		}
 	]

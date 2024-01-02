@@ -24,5 +24,10 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 - Local System Time to Text
 - Local System Time to String
 
+### Steam Deck
+
+- Is Steam Deck?
+- Is SteamOS?
+
 
 
