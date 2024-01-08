@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "Time.generated.h"
+#include "Time_Sumatras.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class SUMATRAS_STUDIOS_TOOLS_API UTime : public UBlueprintFunctionLibrary
+class SUMATRAS_STUDIOS_TOOLS_API UTimeSumatras : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 	

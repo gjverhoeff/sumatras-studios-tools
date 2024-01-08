@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "SteamDeck.generated.h"
+#include "SteamDeck_Sumatras.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class SUMATRAS_STUDIOS_TOOLS_API USteamDeck : public UBlueprintFunctionLibrary
+class SUMATRAS_STUDIOS_TOOLS_API USteamDeckSumatras : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 

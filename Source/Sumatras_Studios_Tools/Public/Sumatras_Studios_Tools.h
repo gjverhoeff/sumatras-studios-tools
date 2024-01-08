@@ -1,7 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #pragma once
-
 #include "Modules/ModuleManager.h"
 
 class FSumatras_Studios_ToolsModule : public IModuleInterface

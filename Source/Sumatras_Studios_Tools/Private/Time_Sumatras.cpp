@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Time.h"
+#include "Time_Sumatras.h"
 
 // Local System Time to Text
-void UTime::LocalTime(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FText& TimeText)
+void UTimeSumatras::LocalTime(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FText& TimeText)
 {
 
 	FDateTime CurrentTime = FDateTime::Now();
@@ -128,7 +128,7 @@ void UTime::LocalTime(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FT
 };
 
 // Local System Time to String
-void UTime::LocalTimeToString(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FString& TimeString)
+void UTimeSumatras::LocalTimeToString(bool MilitaryTime, bool DisplaySeconds, bool addPMorAM, FString& TimeString)
 {
 
 	FDateTime CurrentTime = FDateTime::Now();
