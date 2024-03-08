@@ -38,6 +38,9 @@ public class Sumatras_Studios_Tools : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+                "Json",
+                "HTTP"
+				
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
