@@ -3,7 +3,7 @@ Plugin for Unreal Engine 5. Evolving library of functions written to be used in 
 
 
 ## Installation
-Clone this repository in your Plugins folder of your project and make sure the plugin is enabled.
+Download the latest release from the releases page for the packaged plugin or clone the this repository and add it to your plugins folder of your Unreal Engine project. Make sure to enable the plugin within your project. 
 
 
 ## Available Blueprint Nodes
