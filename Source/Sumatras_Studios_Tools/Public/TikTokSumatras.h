@@ -10,7 +10,7 @@
  * 
  */
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHttpRequestLastPostCompleted, const FString&, mediaURL, bool, bSuccess);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHttpRequestTikTokCompleted, const FString&, mediaURL, bool, bSuccess);
 
 
 UCLASS()
@@ -31,7 +31,7 @@ public:
 	static UTikTokSumatras* TikTokSumatras(UObject* WorldContextObject, FString Tiktok_Video_ID);
 
 	UPROPERTY(BlueprintAssignable)
-	FOnHttpRequestLastPostCompleted Completed;
+	FOnHttpRequestTikTokCompleted Completed;
 
 	/* URL to send GET request to */
 	FString URL;

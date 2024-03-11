@@ -12,17 +12,17 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 
 </br>
 
+### Instagram
+
+- Get Instagram UserID (Basic Display API)
+- Get Last Instagram Post (Basic Display API)
+
 ### Rotational Unreal Units
 
 - Rotational Unreal Units to Degrees
 - Rotational Unreal Units to Radian
 - Degrees to Rotational Unreal Units
 - Radian to Rotational Unreal Units
-
-### Time
-
-- Local System Time to Text
-- Local System Time to String
 
 ### Steam Deck
 
@@ -31,6 +31,11 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 
 ### TikTok
 - Get TikTok Video URL
+
+### Time
+
+- Local System Time to Text
+- Local System Time to String
 
 
 
