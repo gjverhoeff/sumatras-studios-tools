@@ -39,7 +39,8 @@ public class Sumatras_Studios_Tools : ModuleRules
 				"Slate",
 				"SlateCore",
                 "Json",
-                "HTTP"
+                "HTTP",
+                "XmlParser"
 				
 				// ... add private dependencies that you statically link with here ...	
 			}
