@@ -19,17 +19,21 @@ void UVLCStatus_Sumatras::Activate()
 	HttpRequest->SetVerb("GET");
 	HttpRequest->SetHeader("Content-Type", "application/xml");
 	HttpRequest->SetURL(URL);
+	
 
 	// Setup Async response
 	HttpRequest->OnProcessRequestComplete().BindLambda([this](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bSuccess)
 		{
 			FString ResponseString = "";
+			FString ArtworkLink = "";
+
 			if (bSuccess)
 			{
 				ResponseString = Response->GetContentAsString();
+				ArtworkLink = VLCArtworkURL;
 			}
 
-			this->HandleRequestCompleted(ResponseString, bSuccess);
+			this->HandleRequestCompleted(ResponseString, ArtworkLink, bSuccess);
 
 		});
 
@@ -40,7 +44,7 @@ void UVLCStatus_Sumatras::Activate()
 
 
 
-void UVLCStatus_Sumatras::HandleRequestCompleted(FString ResponseString, bool bSuccess)
+void UVLCStatus_Sumatras::HandleRequestCompleted(FString ResponseString, FString ArtworkLink, bool bSuccess)
 {
 
 	int lenght;
@@ -54,6 +58,8 @@ void UVLCStatus_Sumatras::HandleRequestCompleted(FString ResponseString, bool bS
 
 
 	{
+
+
 
 		mediaposition = 0;
 		lenght = 0;
@@ -141,7 +147,7 @@ void UVLCStatus_Sumatras::HandleRequestCompleted(FString ResponseString, bool bS
 			
 
 
-			Completed.Broadcast(title, artist, filename, MediaLenght, MediaPosition, bSuccess);
+			Completed.Broadcast(title, artist, ArtworkLink, MediaLenght, MediaPosition, bSuccess);
 
 		}
 
@@ -159,6 +165,7 @@ UVLCStatus_Sumatras* UVLCStatus_Sumatras::VLCStatus_Sumatras(UObject* WorldConte
 	// Create Action Instance for Blueprint System
 	UVLCStatus_Sumatras* Action = NewObject<UVLCStatus_Sumatras>();
 	Action->URL = "http://:" + Password + "@" + IP + ":" + FString::FromInt(Port) + "/requests/status.xml";
+	Action->VLCArtworkURL = "http://:" + Password + "@" + IP + ":" + FString::FromInt(Port) + "/art";
 	Action->RegisterWithGameInstance(WorldContextObject);
 
 	return Action;

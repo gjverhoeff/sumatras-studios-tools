@@ -9,7 +9,7 @@
 /**
  * 
  */
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_SixParams(FOnHttpRequestVLCStatusCompleted, const FString&, title, const FString&, artist, const FString&, FileName, const int&, MediaLenght, const float&, MediaPosition, bool, bSuccess);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_SixParams(FOnHttpRequestVLCStatusCompleted, const FString&, title, const FString&, artist, const FString&, AlbumCoverArtURL, const int&, MediaLenght, const float&, MediaPosition, bool, bSuccess);
 
 
 UCLASS()
@@ -19,7 +19,7 @@ class SUMATRAS_STUDIOS_TOOLS_API UVLCStatus_Sumatras : public UBlueprintAsyncAct
 
 
 protected:
-	void HandleRequestCompleted(FString ResponseString, bool bSuccess);
+	void HandleRequestCompleted(FString ResponseString, FString ArtworkLink, bool bSuccess);
 
 
 public:
@@ -34,6 +34,7 @@ public:
 
 	/* URL to send GET request to */
 	FString URL;
+	FString VLCArtworkURL;
 
 };
 
