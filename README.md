@@ -17,6 +17,12 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 - Get Instagram UserID (Basic Display API)
 - Get Last Instagram Post (Basic Display API)
 
+### Resolume Arena
+
+- Trigger Resolume Arena Column
+- Trigger Resolume Arena Clip
+- Clear Resolume Arena Layer
+
 ### Rotational Unreal Units
 
 - Rotational Unreal Units to Degrees

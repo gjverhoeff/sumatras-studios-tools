@@ -16,13 +16,13 @@ class SUMATRAS_STUDIOS_TOOLS_API UResolume_Sumatras : public UBlueprintFunctionL
 	GENERATED_BODY()
 
 	// Rotational Unreal Units to Degrees
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Trigger Resolume Column", Keywords = "Resolume Connect Column Trigger"), Category = "Sumatras Studios Tools|Resolume")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Trigger Resolume Arena Column", Keywords = "Resolume Connect Column Trigger"), Category = "Sumatras Studios Tools|Resolume")
 	static void ConnectColumnResolume_Sumatras(FString ip, int port, int column);
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Clear Resolume Layer", Keywords = "Resolume Layer Clear Trigger"), Category = "Sumatras Studios Tools|Resolume")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Clear Resolume Arena Layer", Keywords = "Resolume Layer Clear Trigger"), Category = "Sumatras Studios Tools|Resolume")
 	static void ClearLayerResolume_Sumatras(FString ip, int port, int layer);
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Trigger Resolume Clip", Keywords = "Resolume clip Clear Trigger"), Category = "Sumatras Studios Tools|Resolume")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Trigger Resolume Arena Clip", Keywords = "Resolume clip Clear Trigger"), Category = "Sumatras Studios Tools|Resolume")
 	static void TriggerClipResolume_Sumatras(FString ip, int port, int column, int layer);
 
 };
