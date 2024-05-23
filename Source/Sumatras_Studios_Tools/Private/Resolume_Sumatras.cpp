@@ -3,6 +3,7 @@
 
 #include "Resolume_Sumatras.h"
 #include "Interfaces/IHttpRequest.h"
+#include "HttpModule.h"
 
 void UResolume_Sumatras::ConnectColumnResolume_Sumatras(FString ip, int port, int column)
 {
