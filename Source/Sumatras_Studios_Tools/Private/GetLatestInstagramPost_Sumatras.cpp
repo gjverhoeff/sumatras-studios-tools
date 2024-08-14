@@ -56,17 +56,17 @@ void UGetLatestInstagramPost::HandleRequestCompleted(FString ResponseString, boo
 		// The simplest example parsing of the plain JSON.
 		// Here you can expand to fetch your specific layout of values and objects and return
 		// it via a UStruct or separate params in the Completed.Broadcast()
-		if (JsonObject->TryGetField("data"))
+		if (JsonObject->TryGetField(FString("data")))
 		{
-			TArray<TSharedPtr<FJsonValue>> dataArray = JsonObject->GetArrayField("data");
+			TArray<TSharedPtr<FJsonValue>> dataArray = JsonObject->GetArrayField(FString("data"));
 
 			auto lastPost = dataArray[0]->AsObject();
 
-			mediaType = lastPost->GetStringField("media_type");
-			mediaURL = lastPost->GetStringField("media_url");
-			caption = lastPost->GetStringField("caption");
-			timestamp = lastPost->GetStringField("timestamp");
-			username = lastPost->GetStringField("username");
+			mediaType = lastPost->GetStringField(FString("media_type"));
+			mediaURL = lastPost->GetStringField(FString("media_url"));
+			caption = lastPost->GetStringField(FString("caption"));
+			timestamp = lastPost->GetStringField(FString("timestamp"));
+			username = lastPost->GetStringField(FString("username"));
 
 			bSuccess = true;
 

@@ -55,15 +55,15 @@ void UTikTokSumatras::HandleRequestCompleted(FString ResponseString, bool bSucce
 		{
 			const TArray< TSharedPtr< FJsonValue > >* DataJsonObject;
 
-			if (JsonObject->TryGetArrayField("aweme_list", DataJsonObject)) {
+			if (JsonObject->TryGetArrayField(FString("aweme_list"), DataJsonObject)) {
 
-				TArray<TSharedPtr<FJsonValue>> ArrayAweme = JsonObject->GetArrayField("aweme_list");
+				TArray<TSharedPtr<FJsonValue>> ArrayAweme = JsonObject->GetArrayField(FString("aweme_list"));
 
 				auto Array0Aweme = ArrayAweme[0]->AsObject();
 
-				TSharedPtr<FJsonObject> objVideo = Array0Aweme->GetObjectField("video");
-				TSharedPtr<FJsonObject> objDownload = objVideo->GetObjectField("download_addr");
-				TArray<TSharedPtr<FJsonValue>> uriArray = objDownload->GetArrayField("url_list");
+				TSharedPtr<FJsonObject> objVideo = Array0Aweme->GetObjectField(FString("video"));
+				TSharedPtr<FJsonObject> objDownload = objVideo->GetObjectField(FString("download_addr"));
+				TArray<TSharedPtr<FJsonValue>> uriArray = objDownload->GetArrayField(FString("url_list"));
 
 				URLInternal = uriArray[0]->AsString();
 

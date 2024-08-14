@@ -50,7 +50,7 @@ void UGetInstagramUserID::HandleRequestCompleted(FString ResponseString, bool bS
 		// The simplest example parsing of the plain JSON.
 		// Here you can expand to fetch your specific layout of values and objects and return
 		// it via a UStruct or separate params in the Completed.Broadcast()
-		if (!JsonObject->TryGetStringField("ID", UserID))
+		if (!JsonObject->TryGetStringField(FString("ID"), UserID))
 		{
 			// While response may be successful, we failed to retrieve the string field
 			bSuccess = false;
