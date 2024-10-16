@@ -29,6 +29,7 @@ public:
 	/** Execute the actual load */
 	virtual void Activate() override;
 
+	// Get your own public IP using ipify
 	UFUNCTION(BlueprintCallable, meta = (BlueprintInternalUseOnly = "true", Category = "Sumatras Studios Tools|Networking", WorldContext = "WorldContextObject", DisplayName = "Get Public IP (ipify)", CompactNodeTitle = "Get Public IP"))
 	static UGetPublicIP_Sumatras* GetPublicIP(UObject* WorldContextObject);
 

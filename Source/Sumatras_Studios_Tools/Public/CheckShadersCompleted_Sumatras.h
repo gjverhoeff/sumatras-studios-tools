@@ -16,7 +16,7 @@ class SUMATRAS_STUDIOS_TOOLS_API UCheckShadersCompletedSumatras : public UBluepr
 	
 		GENERATED_BODY()
 
-		// SteamDeck Node for detecting SteamDeck
+		// Check if shaders are compiling
 		UFUNCTION(BlueprintPure, meta = (DisplayName = "Shaders compiling? (EDITOR ONLY)", Keywords = "Shaders done compiling"), Category = "Sumatras Studios Tools|Shaders")
 		static UPARAM(DisplayName = "Return Value") bool CheckShadersCompleted_Sumatras();
 
