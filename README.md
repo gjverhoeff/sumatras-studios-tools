@@ -53,4 +53,16 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 
 - Get VLC Status
 
+### Windows OS
+
+- WindowsOS Version
+- User Region
+- Get preferred languages
+- PC running on Battery
+- Get Physical RAM in GB
+- Get CPU Name
+- Get CPU Vendor
+- Get amount of CPU cores
+- Get GPU Name
+
 
