@@ -40,16 +40,14 @@ class SUMATRAS_STUDIOS_TOOLS_API UWindowsPlatformSettings_Sumatras : public UBlu
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get amount of CPU Cores", Keywords = "Get CPU amount of Cores"), Category = "Sumatras Studios Tools|Windows OS")
 	static UPARAM(DisplayName = "Return Value") int32 GetCPUCores();
 
-	/*UFUNCTION(BlueprintPure, meta = (DisplayName = "Get drives letters", Keywords = "Get available harddrives"), Category = "Sumatras Studios Tools|Windows OS")
-	static UPARAM(DisplayName = "Return Value") TArray<FString> GetDrives();*/
-
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get preferred languages", Keywords = "Get available harddrives"), Category = "Sumatras Studios Tools|Windows OS")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get preferred languages", Keywords = "Get preferred languages"), Category = "Sumatras Studios Tools|Windows OS")
 	static UPARAM(DisplayName = "Return Value") TArray<FString> GetPreferredLanguages();
 	
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Physical RAM in GB", Keywords = "Get GB RAM"), Category = "Sumatras Studios Tools|Windows OS")
 	static UPARAM(DisplayName = "Return Value") int32 GetPhysicalGBRam();
 
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Hard Drives", Keywords = "Get drives"), Category = "Sumatras Studios Tools|Windows OS")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Hard Drives Letters", Keywords = "Get available harddrives"), Category = "Sumatras Studios Tools|Windows OS")
 	static UPARAM(DisplayName = "Return Value") TArray<FString> GetHardDrives();
+
 
 };
