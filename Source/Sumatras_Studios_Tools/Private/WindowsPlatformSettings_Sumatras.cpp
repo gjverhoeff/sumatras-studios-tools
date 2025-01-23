@@ -63,33 +63,34 @@ int32 UWindowsPlatformSettings_Sumatras::GetCPUCores()
 	return FWindowsPlatformMisc::NumberOfCores();
 }
 
-//TArray<FString> UWindowsPlatformSettings_Sumatras::GetDrives()
-//{
-//	TArray<FString> drives;
-//	FString letters = TEXT("CDEFGHIJKLMNOPQRSTUVWXYZ");
-//	FString drive;
-//
-//	for (int32 i = 0; i < letters.Len(); i++)
-//	{
-//		drive = FString(1, (&letters.GetCharArray()[i]));
-//		drive.Append(TEXT(":/"));
-//
-//
-//		const FString fullPath = FPaths::GetCleanFilename(drive);
-//		const FFileStatData data = FPlatformFileManager::Get().GetPlatformFile().GetStatData(*drive);
-//		
-//		if (data.bIsDirectory)
-//		{
-//			drives.Add(drive);
-//		}
-//	}
-//	return drives;
-//}
 
 TArray<FString> UWindowsPlatformSettings_Sumatras::GetPreferredLanguages()
 {
 	
 	return FGenericPlatformMisc::GetPreferredLanguages();
+}
+
+TArray<FString> UWindowsPlatformSettings_Sumatras::GetHardDrives()
+{
+	
+		TArray<FString> drives;
+		FString letters = TEXT("CDEFGHIJKLMNOPQRSTUVWXYZ");
+		FString drive;
+
+		for (int32 i = 0; i < letters.Len(); i++)
+		{
+			drive = FString(1, (&letters.GetCharArray()[i]));
+			drive.Append(TEXT(":/"));
+
+			const FString fullPath = FPaths::GetCleanFilename(drive);
+			const FFileStatData data = FPlatformFileManager::Get().GetPlatformFile().GetStatData(*drive);
+			if (data.bIsDirectory)
+			{
+				drives.Add(drive);
+			}
+		}
+		return drives;
+	
 }
 
 int32 UWindowsPlatformSettings_Sumatras::GetPhysicalGBRam()
