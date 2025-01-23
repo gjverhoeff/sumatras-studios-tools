@@ -46,7 +46,7 @@ class SUMATRAS_STUDIOS_TOOLS_API UWindowsPlatformSettings_Sumatras : public UBlu
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Physical RAM in GB", Keywords = "Get GB RAM"), Category = "Sumatras Studios Tools|Windows OS")
 	static UPARAM(DisplayName = "Return Value") int32 GetPhysicalGBRam();
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Hard Drives Letters", Keywords = "Get available harddrives"), Category = "Sumatras Studios Tools|Windows OS")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Hard Drive Letters", Keywords = "Get available harddrives"), Category = "Sumatras Studios Tools|Windows OS")
 	static UPARAM(DisplayName = "Return Value") TArray<FString> GetHardDrives();
 
 

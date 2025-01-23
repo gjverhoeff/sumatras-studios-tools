@@ -64,5 +64,6 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 - Get CPU Vendor
 - Get amount of CPU cores
 - Get GPU Name
+- Get Hard Drive Letters
 
 
