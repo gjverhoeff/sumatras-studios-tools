@@ -77,6 +77,7 @@ TArray<FString> UWindowsPlatformSettings_Sumatras::GetPreferredLanguages()
 TArray<FString> UWindowsPlatformSettings_Sumatras::GetHardDrives()
 {
 	
+//Solution from https://forums.unrealengine.com/t/how-to-get-a-hard-drives-list-like-c-d-e/404059/3
 
 #if PLATFORM_WINDOWS
 	TArray<FString> drives;
