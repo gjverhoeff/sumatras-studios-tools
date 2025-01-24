@@ -8,6 +8,7 @@
 #include "Windows/HideWindowsPlatformTypes.h" 
 #include "GenericPlatform/GenericPlatformMisc.h"
 #include "GenericPlatform/GenericPlatformMemory.h"
+#include "GenericPlatform/GenericPlatformTime.h"
 #include "Misc/Paths.h"
 #include "HAL/PlatformFileManager.h"
 #include "Misc/PackageName.h"
@@ -109,3 +110,7 @@ int32 UWindowsPlatformSettings_Sumatras::GetPhysicalGBRam()
 	return  FGenericPlatformMemory::GetPhysicalGBRam();
 }
 
+float UWindowsPlatformSettings_Sumatras::GetCPUsage()
+{
+	return FWindowsPlatformTime::GetCPUTime().CPUTimePct;
+}
