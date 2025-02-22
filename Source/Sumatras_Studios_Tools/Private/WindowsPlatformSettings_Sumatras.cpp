@@ -8,10 +8,12 @@
 #include "Windows/HideWindowsPlatformTypes.h" 
 #include "GenericPlatform/GenericPlatformMisc.h"
 #include "GenericPlatform/GenericPlatformMemory.h"
+#include "Windows/WindowsSystemIncludes.h"
 #include "GenericPlatform/GenericPlatformTime.h"
 #include "Misc/Paths.h"
 #include "HAL/PlatformFileManager.h"
 #include "Misc/PackageName.h"
+#include <Lmcons.h>
 #include "GenericPlatform/GenericPlatformFile.h"
 #endif
 
@@ -113,4 +115,19 @@ int32 UWindowsPlatformSettings_Sumatras::GetPhysicalGBRam()
 float UWindowsPlatformSettings_Sumatras::GetCPUsage()
 {
 	return FWindowsPlatformTime::GetCPUTime().CPUTimePct;
+}
+
+FString UWindowsPlatformSettings_Sumatras::WindowsUserName()
+{
+	TCHAR name[UNLEN + 1];
+	DWORD size = UNLEN + 1;
+	
+	FString username;
+
+	if (GetUserName((TCHAR*)name, &size)) {
+		username = name;
+	}
+	else { username = "undefined"; };
+
+	return username;
 }

@@ -52,5 +52,7 @@ class SUMATRAS_STUDIOS_TOOLS_API UWindowsPlatformSettings_Sumatras : public UBlu
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get CPU Usage", Keywords = "Get CPU Usage"), Category = "Sumatras Studios Tools|Windows OS")
 	static UPARAM(DisplayName = "Return Value") float GetCPUsage();
 
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Windows User Name", Keywords = "Windows Username"), Category = "Sumatras Studios Tools|Windows OS")
+	static UPARAM(DisplayName = "Return Value") FString WindowsUserName();
 
 };
