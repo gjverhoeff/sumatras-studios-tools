@@ -1,7 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "WindowsPlatformSettings_Sumatras.h"
+
 #if PLATFORM_WINDOWS
 #include "Windows/AllowWindowsPlatformTypes.h" 
 #include <Windows.h>
@@ -9,125 +7,172 @@
 #include "GenericPlatform/GenericPlatformMisc.h"
 #include "GenericPlatform/GenericPlatformMemory.h"
 #include "Windows/WindowsSystemIncludes.h"
-#include "GenericPlatform/GenericPlatformTime.h"
 #include "Misc/Paths.h"
 #include "HAL/PlatformFileManager.h"
-#include "Misc/PackageName.h"
+#include "Misc/FileHelper.h"
+#include "ShlObj.h"
+#include <lm.h>
 #include <Lmcons.h>
+#include "Engine/Texture2D.h"
+#include "ImageUtils.h"
 #include "GenericPlatform/GenericPlatformFile.h"
 #endif
 
-
 FString UWindowsPlatformSettings_Sumatras::WindowsOSRegion()
 {
-
 #if PLATFORM_WINDOWS
-	int geoId = GetUserGeoID(16);
-	int lcid = GetUserDefaultLCID();
-	wchar_t locationBuffer[3];
-	GetGeoInfo(geoId, 4, locationBuffer, 3, lcid);
-	
-	FString Region = FString(locationBuffer);
+    int geoId = GetUserGeoID(16);
+    int lcid = GetUserDefaultLCID();
+    wchar_t locationBuffer[3];
+    GetGeoInfo(geoId, 4, locationBuffer, 3, lcid);
 
-	return Region;
-#elif
-	UE_LOG(LogTemp, Warning, TEXT("App is not running on windows, cannot get user country from Windows platform."));
-	return FString();
+    return FString(locationBuffer);
+#else
+    UE_LOG(LogTemp, Warning, TEXT("App is not running on Windows, cannot get user country."));
+    return FString();
 #endif
-
 }
-
-
 
 FString UWindowsPlatformSettings_Sumatras::WindowsOSVersion()
 {
-	return FWindowsPlatformMisc::GetOSVersion();
+    return FWindowsPlatformMisc::GetOSVersion();
 }
 
 bool UWindowsPlatformSettings_Sumatras::RunningOnBattery()
 {
-	return FWindowsPlatformMisc::IsRunningOnBattery();
+    return FWindowsPlatformMisc::IsRunningOnBattery();
 }
-
 
 FString UWindowsPlatformSettings_Sumatras::GetCPUBrand()
 {
-	return FWindowsPlatformMisc::GetCPUBrand();
+    return FWindowsPlatformMisc::GetCPUBrand();
 }
 
 FString UWindowsPlatformSettings_Sumatras::GetCPUVendor()
 {
-	return FWindowsPlatformMisc::GetCPUVendor();
+    return FWindowsPlatformMisc::GetCPUVendor();
 }
 
 FString UWindowsPlatformSettings_Sumatras::GetGPUBrand()
 {
-	return FWindowsPlatformMisc::GetPrimaryGPUBrand();
+    return FWindowsPlatformMisc::GetPrimaryGPUBrand();
 }
 
 int32 UWindowsPlatformSettings_Sumatras::GetCPUCores()
 {
-	return FWindowsPlatformMisc::NumberOfCores();
+    return FWindowsPlatformMisc::NumberOfCores();
 }
-
 
 TArray<FString> UWindowsPlatformSettings_Sumatras::GetPreferredLanguages()
 {
-	
-	return FGenericPlatformMisc::GetPreferredLanguages();
+    return FGenericPlatformMisc::GetPreferredLanguages();
 }
 
 TArray<FString> UWindowsPlatformSettings_Sumatras::GetHardDrives()
 {
-	
-//Solution from https://forums.unrealengine.com/t/how-to-get-a-hard-drives-list-like-c-d-e/404059/3
-
 #if PLATFORM_WINDOWS
-	TArray<FString> drives;
-	FString letters = TEXT("CDEFGHIJKLMNOPQRSTUVWXYZ");
-	FString drive;
+    TArray<FString> drives;
+    FString letters = TEXT("CDEFGHIJKLMNOPQRSTUVWXYZ");
 
-	for (int32 i = 0; i < letters.Len(); i++)
-	{
-		drive = FString(1, (&letters.GetCharArray()[i]));
-		drive.Append(TEXT(":/"));
+    for (int32 i = 0; i < letters.Len(); i++)
+    {
+        FString drive = FString(1, (&letters.GetCharArray()[i])) + TEXT(":/");
 
-		const FString fullPath = FPaths::GetCleanFilename(drive);
-		const FFileStatData data = FPlatformFileManager::Get().GetPlatformFile().GetStatData(*drive);
-		if (data.bIsDirectory)
-		{
-			drives.Add(drive);
-		}
-	}
-	return drives;
-#elif
-	UE_LOG(LogTemp, Warning, TEXT("App is not running on windows, cannot get user country from Windows platform."));
-	return TArray<FString>;
+        const FString fullPath = FPaths::GetCleanFilename(drive);
+        const FFileStatData data = FPlatformFileManager::Get().GetPlatformFile().GetStatData(*drive);
+        if (data.bIsDirectory)
+        {
+            drives.Add(drive);
+        }
+    }
+
+    return drives;
+#else
+    UE_LOG(LogTemp, Warning, TEXT("App is not running on Windows, cannot get hard drives."));
+    return TArray<FString>();
 #endif
-	
 }
 
 int32 UWindowsPlatformSettings_Sumatras::GetPhysicalGBRam()
 {
-	return  FGenericPlatformMemory::GetPhysicalGBRam();
+    return FGenericPlatformMemory::GetPhysicalGBRam();
 }
 
 float UWindowsPlatformSettings_Sumatras::GetCPUsage()
 {
-	return FWindowsPlatformTime::GetCPUTime().CPUTimePct;
+    return FWindowsPlatformTime::GetCPUTime().CPUTimePct;
 }
 
 FString UWindowsPlatformSettings_Sumatras::WindowsUserName()
 {
-	TCHAR name[UNLEN + 1];
-	DWORD size = UNLEN + 1;
-	
-	FString username;
+    TCHAR name[UNLEN + 1];
+    DWORD size = UNLEN + 1;
+    return GetUserName(name, &size) ? FString(name) : TEXT("undefined");
+}
 
-	if (GetUserName((TCHAR*)name, &size)) {
-		username = name;
-	}
-	else { username = "undefined"; };
+// Manually define EXTENDED_NAME_FORMAT enum
+enum EXTENDED_NAME_FORMAT
+{
+    NameUnknown = 0,
+    NameFullyQualifiedDN = 1,
+    NameSamCompatible = 2,
+    NameDisplay = 3,
+    NameUniqueId = 6,
+    NameCanonical = 7,
+    NameUserPrincipal = 8,
+    NameCanonicalEx = 9
+};
 
-	return username;
+typedef BOOL(WINAPI* GetUserNameExWFunc)(EXTENDED_NAME_FORMAT, LPWSTR, PULONG);
+
+// Declare the function pointer
+GetUserNameExWFunc GetUserNameExW = nullptr;
+
+void UWindowsPlatformSettings_Sumatras::GetLoggedInUserInfo(FString& LoggedInEmail, FString& DisplayName)
+{
+    // Default values
+    LoggedInEmail = TEXT("undefined");
+    DisplayName = TEXT("undefined");
+
+    // Dynamically load the GetUserNameExW function from Secur32.dll if not already loaded
+    if (!GetUserNameExW)
+    {
+        HMODULE hSecDll = LoadLibrary(TEXT("Secur32.dll"));
+        if (hSecDll)
+        {
+            GetUserNameExW = (GetUserNameExWFunc)GetProcAddress(hSecDll, "GetUserNameExW");
+        }
+    }
+
+    // Ensure the function is loaded before using it
+    if (GetUserNameExW)
+    {
+        TCHAR displayNameBuffer[256];
+        ULONG displayNameSize = sizeof(displayNameBuffer) / sizeof(TCHAR);
+
+        // Get display name
+        if (GetUserNameExW(NameDisplay, displayNameBuffer, &displayNameSize))
+        {
+            DisplayName = displayNameBuffer;
+        }
+    }
+
+    // Get Email
+    TCHAR usernameBuffer[UNLEN + 1];
+    DWORD usernameSize = UNLEN + 1;
+
+    if (GetUserName(usernameBuffer, &usernameSize))
+    {
+        LPUSER_INFO_24 pInfo24 = nullptr;
+        const wchar_t* accountName = usernameBuffer;
+
+        if (NetUserGetInfo(NULL, accountName, 24, (LPBYTE*)&pInfo24) == NERR_Success)
+        {
+            if (pInfo24 && pInfo24->usri24_internet_principal_name)
+            {
+                LoggedInEmail = FString(pInfo24->usri24_internet_principal_name);
+            }
+            NetApiBufferFree(pInfo24);
+        }
+    }
 }

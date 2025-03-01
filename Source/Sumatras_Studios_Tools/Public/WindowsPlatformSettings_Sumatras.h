@@ -8,6 +8,7 @@
 #if PLATFORM_WINDOWS
 #include "Windows/AllowWindowsPlatformTypes.h" 
 #include <Windows.h>
+#include <lm.h>
 #include "Windows/HideWindowsPlatformTypes.h" 
 #endif
 
@@ -18,6 +19,12 @@ UCLASS()
 class SUMATRAS_STUDIOS_TOOLS_API UWindowsPlatformSettings_Sumatras : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
+
+public:
+
+	
+
+
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "WindowsOS Version", Keywords = "Windows OS Version"), Category = "Sumatras Studios Tools|Windows OS")
 	static UPARAM(DisplayName = "Return Value") FString WindowsOSVersion();
@@ -54,5 +61,8 @@ class SUMATRAS_STUDIOS_TOOLS_API UWindowsPlatformSettings_Sumatras : public UBlu
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Windows User Name", Keywords = "Windows Username"), Category = "Sumatras Studios Tools|Windows OS")
 	static UPARAM(DisplayName = "Return Value") FString WindowsUserName();
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Windows User Account", Keywords = "Windows Username"), Category = "Sumatras Studios Tools|Windows OS")
+	static void GetLoggedInUserInfo(FString& LoggedInEmail, FString& DisplayName);
 
 };

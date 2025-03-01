@@ -53,5 +53,8 @@ public class Sumatras_Studios_Tools : ModuleRules
 				// ... add any modules that your module loads dynamically here ...
 			}
 			);
-	}
+
+        //PublicAdditionalLibraries.Add("Shell32.lib");
+       // PublicSystemLibraries.Add("Ole32.lib");
+    }
 }
