@@ -39,6 +39,14 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 
 - Shaders Compiling? (EDITOR ONLY)
 
+### Spotify (local non-api)
+
+- Play/Pause
+- Next Track
+- Previous Track
+- Stop
+- Get current Track
+
 ### Steam Deck
 
 - Is Steam Deck
