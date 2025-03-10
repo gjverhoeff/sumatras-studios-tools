@@ -12,6 +12,7 @@
 #include "Misc/FileHelper.h"
 #include "ShlObj.h"
 #include <lm.h>
+#include <uxtheme.h>
 #include <Lmcons.h>
 #include "TlHelp32.h" 
 #include "Engine/Texture2D.h"
@@ -203,5 +204,40 @@ TArray<FString> UWindowsPlatformSettings_Sumatras::GetRunningProcesses()
 #else
     UE_LOG(LogTemp, Warning, TEXT("App is not running on Windows, cannot get running processes."));
     return TArray<FString>();
+#endif
+}
+
+
+void UWindowsPlatformSettings_Sumatras::GetWindowsThemeColors(FColor& AccentColor)
+{
+#if PLATFORM_WINDOWS
+    // Load the dwmapi.dll library
+    HMODULE hModule = LoadLibraryA("dwmapi.dll");
+    if (hModule)
+    {
+        // Get the address of the DwmGetColorizationColor function
+        typedef HRESULT(WINAPI* DwmGetColorizationColorFunc)(DWORD*, DWORD*);
+        DwmGetColorizationColorFunc DwmGetColorizationColor = (DwmGetColorizationColorFunc)GetProcAddress(hModule, "DwmGetColorizationColor");
+
+        // Check if the function is available
+        if (DwmGetColorizationColor)
+        {
+            // Get the colorization color
+            DWORD colorizationColor;
+            DWORD colorizationBlurBehind;
+            HRESULT hr = DwmGetColorizationColor(&colorizationColor, &colorizationBlurBehind);
+
+            // Check if the function call was successful
+            if (SUCCEEDED(hr))
+            {
+                // Get the color of the window background
+                COLORREF accentColor = colorizationColor;
+                AccentColor = FColor(accentColor);
+
+            }
+        }
+    }
+#else
+    UE_LOG(LogTemp, Warning, TEXT("App is not running on Windows, cannot get theme colors."));
 #endif
 }

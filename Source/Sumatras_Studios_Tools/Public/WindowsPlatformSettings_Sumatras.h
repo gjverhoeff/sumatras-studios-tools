@@ -68,4 +68,7 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Running Processes", Keywords = "Get running processes"), Category = "Sumatras Studios Tools|Windows OS")
 	static UPARAM(DisplayName = "Return Value") TArray<FString> GetRunningProcesses();
 
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Windows Theme Colors", Keywords = "Get Windows Theme Colors"), Category = "Sumatras Studios Tools|Windows OS")
+	static void GetWindowsThemeColors(FColor& AccentColor);
+
 };
