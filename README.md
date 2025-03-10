@@ -41,11 +41,12 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 
 ### Spotify (local non-api)
 
-- Play/Pause
-- Next Track
-- Previous Track
-- Stop
-- Get current Track
+- Play/Pause (local)
+- Next Track (local)
+- Previous Track (local)
+- Stop (local)
+- Get current Track (local)
+- Is Spotify Running? (local)
 
 ### Steam Deck
 
@@ -76,5 +77,6 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 - Get CPU Usage
 - Get Windows Username
 - Get Windows User Account
+- Get Current Processes
 
 

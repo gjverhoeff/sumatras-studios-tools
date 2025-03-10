@@ -13,6 +13,7 @@
 #include "ShlObj.h"
 #include <lm.h>
 #include <Lmcons.h>
+#include "TlHelp32.h" 
 #include "Engine/Texture2D.h"
 #include "ImageUtils.h"
 #include "GenericPlatform/GenericPlatformFile.h"
@@ -175,4 +176,32 @@ void UWindowsPlatformSettings_Sumatras::GetLoggedInUserInfo(FString& LoggedInEma
             NetApiBufferFree(pInfo24);
         }
     }
+}
+
+TArray<FString> UWindowsPlatformSettings_Sumatras::GetRunningProcesses()
+{
+#if PLATFORM_WINDOWS
+    TArray<FString> processes;
+    HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (hSnapshot != INVALID_HANDLE_VALUE)
+    {
+        PROCESSENTRY32 pe;
+        pe.dwSize = sizeof(PROCESSENTRY32);
+
+        if (Process32First(hSnapshot, &pe))
+        {
+            do
+            {
+                processes.Add(FString(pe.szExeFile));
+            } while (Process32Next(hSnapshot, &pe));
+        }
+
+        CloseHandle(hSnapshot);
+    }
+
+    return processes;
+#else
+    UE_LOG(LogTemp, Warning, TEXT("App is not running on Windows, cannot get running processes."));
+    return TArray<FString>();
+#endif
 }

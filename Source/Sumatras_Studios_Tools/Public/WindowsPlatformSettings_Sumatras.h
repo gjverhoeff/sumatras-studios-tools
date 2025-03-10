@@ -65,4 +65,7 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Windows User Account", Keywords = "Windows Username"), Category = "Sumatras Studios Tools|Windows OS")
 	static void GetLoggedInUserInfo(FString& LoggedInEmail, FString& DisplayName);
 
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Running Processes", Keywords = "Get running processes"), Category = "Sumatras Studios Tools|Windows OS")
+	static UPARAM(DisplayName = "Return Value") TArray<FString> GetRunningProcesses();
+
 };
