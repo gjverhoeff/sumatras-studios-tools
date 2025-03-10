@@ -2,7 +2,9 @@
 #if PLATFORM_WINDOWS
 #include "Windows/AllowWindowsPlatformTypes.h"
 #include <Windows.h>
+#include "Windows/WindowsPlatformProcess.h"
 #include <psapi.h> // Include this header for GetModuleBaseNameW
+#include <TlHelp32.h>
 #include "Windows/HideWindowsPlatformTypes.h"
 #endif
 
@@ -119,4 +121,35 @@ FString USpotify_Sumatras::GetSpotifyCurrentTrack()
     UE_LOG(LogTemp, Warning, TEXT("Not supported on this platform"));
     return TEXT("Not supported on this platform");
 #endif
+}
+
+bool USpotify_Sumatras::IsSpotifyRunning()
+{
+    HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (hSnapshot == INVALID_HANDLE_VALUE)
+    {
+        return false;
+    }
+
+    PROCESSENTRY32 pe;
+    pe.dwSize = sizeof(PROCESSENTRY32);
+
+    if (!Process32First(hSnapshot, &pe))
+    {
+        CloseHandle(hSnapshot);
+        return false;
+    }
+
+    do
+    {
+        FString ExeName(pe.szExeFile);
+        if (ExeName.ToLower().Contains(TEXT("spotify")))
+        {
+            CloseHandle(hSnapshot);
+            return true;
+        }
+    } while (Process32Next(hSnapshot, &pe));
+
+    CloseHandle(hSnapshot);
+    return false;
 }

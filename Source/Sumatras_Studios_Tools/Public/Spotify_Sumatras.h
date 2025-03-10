@@ -31,6 +31,9 @@ public:
     UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Spotify Current Track", Keywords = "Spotify Now Playing"), Category = "Sumatras Studios Tools|Spotify")
     static FString GetSpotifyCurrentTrack();
 
+    UFUNCTION(BlueprintPure, meta = (DisplayName = "Is Spotify Running", Keywords = "Spotify Application Running"), Category = "Sumatras Studios Tools|Spotify")
+    static bool IsSpotifyRunning();
+
 private:
     static void SimulateMediaKey(WORD MediaKey);
 };
