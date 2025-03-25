@@ -79,4 +79,5 @@ More information about the nodes, formulas used, etc. on the wiki page of this r
 - Get Windows User Account
 - Get Current Processes
 - Get Windows Theme Color
+- Get is Windows in Dark mode
 

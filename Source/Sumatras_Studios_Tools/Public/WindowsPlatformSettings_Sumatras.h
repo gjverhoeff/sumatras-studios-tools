@@ -71,4 +71,9 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Windows Theme Colors", Keywords = "Get Windows Theme Colors"), Category = "Sumatras Studios Tools|Windows OS")
 	static void GetWindowsThemeColors(FColor& AccentColor);
 
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Is Windows in Dark mode", Keywords = "Get Windows Dark Mode"), Category = "Sumatras Studios Tools|Windows OS")
+	static bool IsWindowsDarkModeEnabled();
+
+	
+
 };

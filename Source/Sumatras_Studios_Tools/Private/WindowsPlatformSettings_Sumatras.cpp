@@ -1,8 +1,16 @@
 #include "WindowsPlatformSettings_Sumatras.h"
 
+#include "Misc/Paths.h"
+#include "HAL/FileManager.h"
+#include "Misc/FileHelper.h"
+#include "Modules/ModuleManager.h"
+#include "IImageWrapperModule.h"
+#include "IImageWrapper.h"
+
 #if PLATFORM_WINDOWS
 #include "Windows/AllowWindowsPlatformTypes.h" 
 #include <Windows.h>
+#include <winreg.h>
 #include "Windows/HideWindowsPlatformTypes.h" 
 #include "GenericPlatform/GenericPlatformMisc.h"
 #include "GenericPlatform/GenericPlatformMemory.h"
@@ -13,6 +21,7 @@
 #include "ShlObj.h"
 #include <lm.h>
 #include <uxtheme.h>
+#include <knownfolders.h>
 #include <Lmcons.h>
 #include "TlHelp32.h" 
 #include "Engine/Texture2D.h"
@@ -241,3 +250,39 @@ void UWindowsPlatformSettings_Sumatras::GetWindowsThemeColors(FColor& AccentColo
     UE_LOG(LogTemp, Warning, TEXT("App is not running on Windows, cannot get theme colors."));
 #endif
 }
+
+bool UWindowsPlatformSettings_Sumatras::IsWindowsDarkModeEnabled()
+{
+#if PLATFORM_WINDOWS
+    // Open the registry key where Windows stores the theme setting.
+    HKEY hKey;
+    // Default to 1 (light theme) if key/value is not found.
+    DWORD appsUseLightTheme = 1;
+    DWORD dataSize = sizeof(DWORD);
+    // The key location for the personalization settings.
+    LONG lResult = RegOpenKeyEx(HKEY_CURRENT_USER,
+        TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"),
+        0,
+        KEY_READ,
+        &hKey);
+    if (lResult == ERROR_SUCCESS)
+    {
+        // Query the "AppsUseLightTheme" value.
+        lResult = RegQueryValueEx(hKey,
+            TEXT("AppsUseLightTheme"),
+            nullptr,
+            nullptr,
+            reinterpret_cast<LPBYTE>(&appsUseLightTheme),
+            &dataSize);
+        RegCloseKey(hKey);
+        if (lResult == ERROR_SUCCESS)
+        {
+            // If the value is 0, dark mode is enabled.
+            return (appsUseLightTheme == 0);
+        }
+    }
+#endif
+    return false;
+}
+
+
