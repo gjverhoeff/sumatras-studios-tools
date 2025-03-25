@@ -8,7 +8,7 @@ Download the latest release from the releases page for the packaged plugin or cl
 
 ## Available Blueprint Nodes
 
-More information about the nodes, formulas used, etc. on the wiki page of this repository
+
 
 </br>
 
